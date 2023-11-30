@@ -6,10 +6,8 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  // Определение пути к файлу index.html
   const indexPath = path.join(__dirname, 'index.html');
 
-  // Обработка запроса к index.html
   if (req.url === '/' || req.url === '/index.html') {
     fs.readFile(indexPath, 'utf8', (err, data) => {
       if (err) {
@@ -20,7 +18,6 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      // Чтение содержимого файлов script1.js, script2.js и index.css
       const script1Path = path.join(__dirname, 'scripts', 'script1.js');
       const script2Path = path.join(__dirname, 'scripts', 'script2.js');
       const stylePath = path.join(__dirname, 'styles', 'index.css');
@@ -52,7 +49,6 @@ const server = http.createServer((req, res) => {
               return;
             }
 
-            // Замените соответствующие теги в index.html содержимым файлов
             data = data.replace('<script src="scripts/script1.js"></script>', `<script>${script1}</script>`);
             data = data.replace('<script src="scripts/script2.js"></script>', `<script>${script2}</script>`);
             data = data.replace('<link rel=\'stylesheet\' type=\'text/css\' media=\'screen\' href=\'styles/index.css\'>', `<style>${style}</style>`);
@@ -65,7 +61,6 @@ const server = http.createServer((req, res) => {
       });
     });
   } else if (req.url === '/styles/fonts/Minecraftory.ttf') {
-    // Обработка запроса к Minecraftory.ttf
     const fontPath = path.join(__dirname, 'styles', 'fonts', 'Minecraftory.ttf');
     
     fs.readFile(fontPath, (err, fontData) => {
@@ -82,7 +77,6 @@ const server = http.createServer((req, res) => {
       res.end(fontData);
     });
   } else {
-    // Обработка остальных запросов (например, к статическим файлам)
     const staticPath = path.join(__dirname, req.url);
 
     fs.readFile(staticPath, (err, staticData) => {
@@ -95,7 +89,7 @@ const server = http.createServer((req, res) => {
       }
 
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain'); // Здесь можно указать правильный Content-Type для других типов файлов
+      res.setHeader('Content-Type', 'text/plain');
       res.end(staticData);
     });
   }
