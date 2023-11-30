@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('fonts/Minercraftory.ttf') format('truetype');
+    src: url('styles/fonts/Minercraftory.ttf') format('truetype');
 }
 
 * {
