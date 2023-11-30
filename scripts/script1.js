@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         createButton() {
             const button = document.createElement('button');
             button.textContent = 'PLAY';
+            button.id = 'btnPlay';
             return button;
         }
 
