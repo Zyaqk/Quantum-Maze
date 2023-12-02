@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
   if (req.url === '/' || req.url === '/index.html') {
     fs.readFile(indexPath, 'utf8', (err, data) => {
       if (err) {
-        console.error(err);
+        console.error(err); 
         res.statusCode = 500;
         res.setHeader('Content-Type', 'text/plain');
         res.end('Internal Server Error');
