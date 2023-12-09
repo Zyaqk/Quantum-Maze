@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('styles/fonts/Minercraftory.ttf') format('truetype');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    font-family: 'CustomFont';
+    user-select: none;
+}
+
+header, nav {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+header {
+    margin-top: 35px;
+    flex-direction: column;
+}
+
+nav {
+    color: white;
+    display: block;
+    margin-top: 15%;
+    font-size: 13px;
+}
+
+h1 {
+    text-transform: uppercase;
+    color: yellow;
+    text-shadow: #fbc817 3px 3px;
+    font-size: 40px;
+}
+
+h4 {
+    margin-top: 30px;
+    color: #fbc817;
+    font-weight: lighter;
+    display: inline-grid;
+    width: 50%;
+}
+
+.headerBottom button {
+    margin-top: 180px;
+    padding: 20px 90px;
+    border-radius: 2px;
+    border: 2px solid yellow;
+    background: none;
+    color: yellow;
+    font-family: 'CustomFont';
+    font-size: 35px;
+    cursor: pointer;
+    transition: 0.6s ease-in-out;
+}
+
+.headerBottom button:hover {
+    transition: 0.4s ease-in-out;
+    text-shadow: #fbc817 2px 2px;
+    box-shadow: #fbc817 -1.3px -1.3px;
+}
+
+.btnMusic {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: yellow;
+    font-size: 20px;
+}
+
+.audioMusic {
+  display: flex;
+  position: relative;
+  right: 20px;
+  top: 20px;
+  justify-content: flex-end;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: yellow; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fbc817; 
+}
