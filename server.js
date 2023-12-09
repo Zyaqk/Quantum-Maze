@@ -8,7 +8,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   const indexPath = path.join(__dirname, 'index.html');
 
-  if (req.url === '/' || req.url === '/index.html') {
+  if (req.url === '/main') {
     fs.readFile(indexPath, 'utf8', (err, data) => {
       if (err) {
         console.error(err); 
@@ -59,22 +59,6 @@ const server = http.createServer((req, res) => {
           });
         });
       });
-    });
-  } else if (req.url === '/styles/fonts/Minecraftory.ttf') {
-    const fontPath = path.join(__dirname, 'styles', 'fonts', 'Minecraftory.ttf');
-    
-    fs.readFile(fontPath, (err, fontData) => {
-      if (err) {
-        console.error(err);
-        res.statusCode = 500;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Internal Server Error');
-        return;
-      }
-
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'font/ttf');
-      res.end(fontData);
     });
   } else {
     const staticPath = path.join(__dirname, req.url);

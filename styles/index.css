@@ -66,6 +66,23 @@ h4 {
     box-shadow: #fbc817 -1.3px -1.3px;
 }
 
+.btnMusic {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: yellow;
+    font-size: 20px;
+}
+
+.audioMusic {
+  display: flex;
+  position: relative;
+  right: 20px;
+  top: 20px;
+  justify-content: flex-end;
+}
+
 ::-webkit-scrollbar {
     width: 4px;
 }
