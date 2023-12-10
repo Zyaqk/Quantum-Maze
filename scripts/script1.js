@@ -38,44 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const button = document.createElement('button');
             button.textContent = 'PLAY';
             button.id = 'btnPlay';
+            button.onclick = playClick;
             return button;
         }
 
-        createNav() {
-            const nav = document.createElement('nav');
-            nav.appendChild(this.createNavLeft());
-            nav.appendChild(this.createNavRight());
-            return nav;
-        }
-
-        createNavLeft() {
-            const navLeft = document.createElement('div');
-            navLeft.className = 'navLeft';
-            navLeft.appendChild(this.createH3Left());
-            return navLeft;
-        }
-
-        createH3Left() {
-            const h3Left = document.createElement('h3');
-            h3Left.textContent = '2023 - 2024';
-            return h3Left;
-        }
-
-        createNavRight() {
-            const navRight = document.createElement('div');
-            navRight.className = 'navRight';
-            navRight.appendChild(this.createH3Right());
-            return navRight;
-        }
-
-        createH3Right() {
-            const h3Right = document.createElement('h3');
-            h3Right.textContent = 'All Rights Reserved.';
-            return h3Right;
-        }
     }
 
     const elementCreator = new ElementCreator();
     document.body.appendChild(elementCreator.createHeader());
-    document.body.appendChild(elementCreator.createNav());
 });
