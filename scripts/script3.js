@@ -5,3 +5,9 @@ function playClick() {
 
     window.location.href = redirectUrl;
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === ' ' || event.key === 'Enter') {
+      playClick();
+    }
+});

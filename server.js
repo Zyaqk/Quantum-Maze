@@ -6,10 +6,8 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  const indexPath = path.join(__dirname, 'index.html');
-
   if (req.url === '/main') {
-    fs.readFile(indexPath, 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err, data) => {
       if (err) {
         console.error(err); 
         res.statusCode = 500;
