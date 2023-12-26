@@ -19,6 +19,7 @@ const server = http.createServer((req, res) => {
       const script1Path = path.join(__dirname, 'scripts', 'script1.js');
       const script2Path = path.join(__dirname, 'scripts', 'script2.js');
       const script3Path = path.join(__dirname, 'scripts', 'script3.js');
+      const script4Path = path.join(__dirname, 'scripts', 'script4.js');
       const stylePath = path.join(__dirname, 'styles', 'style.css');
 
       fs.readFile(script1Path, 'utf8', (err, script1) => {
@@ -48,7 +49,7 @@ const server = http.createServer((req, res) => {
               return;
             }
 
-            fs.readFile(stylePath, 'utf8', (err, style) => {
+            fs.readFile(script4Path, 'utf8', (err, script4) => {
               if (err) {
                 console.error(err);
                 res.statusCode = 500;
@@ -57,14 +58,25 @@ const server = http.createServer((req, res) => {
                 return;
               }
 
-              data = data.replace('<script src="scripts/script1.js"></script>', `<script>${script1}</script>`);
-              data = data.replace('<script src="scripts/script2.js"></script>', `<script>${script2}</script>`);
-              data = data.replace('<script src="scripts/script3.js"></script>', `<script>${script3}</script>`);
-              data = data.replace('<link rel=\'stylesheet\' type=\'text/css\' media=\'screen\' href=\'styles/style.css\'>', `<style>${style}</style>`);
+              fs.readFile(stylePath, 'utf8', (err, style) => {
+                if (err) {
+                  console.error(err);
+                  res.statusCode = 500;
+                  res.setHeader('Content-Type', 'text/plain');
+                  res.end('Internal Server Error');
+                  return;
+                }
 
-              res.statusCode = 200;
-              res.setHeader('Content-Type', 'text/html');
-              res.end(data);
+                data = data.replace('<script src="scripts/script3.js"></script>', `<script>${script3}</script>`);
+                data = data.replace('<script src="scripts/script2.js"></script>', `<script>${script2}</script>`);
+                data = data.replace('<script src="scripts/script1.js"></script>', `<script>${script1}</script>`);
+                data = data.replace('<script src="scripts/script4.js"></script>', `<script>${script4}</script>`);
+                data = data.replace('<link rel=\'stylesheet\' type=\'text/css\' media=\'screen\' href=\'styles/style.css\'>', `<style>${style}</style>`);
+
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'text/html');
+                res.end(data);
+              });
             });
           });
         });
@@ -129,6 +141,4 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+server.listen(port, hostname);
