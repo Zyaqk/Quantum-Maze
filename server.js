@@ -127,10 +127,9 @@ const server = http.createServer((req, res) => {
 
     fs.readFile(staticPath, (err, staticData) => {
       if (err) {
-        console.error(err);
         res.statusCode = 404;
         res.setHeader('Content-Type', 'text/plain');
-        res.end('Not Found');
+        res.end('"http" error 404. Sorry, but the requested page was not found. You may have seen an incorrect URL, or the page has been moved or deleted. http:localhost:3000/main');
         return;
       }
 
